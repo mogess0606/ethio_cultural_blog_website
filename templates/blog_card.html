@@ -1,0 +1,36 @@
+{% load static %}
+<div class="row">
+  {% for blog in blogs %}
+  <div class="col-xl-6">
+    <div class="card">
+      <div>
+        <img
+          src="{{blog.banner.url}}"
+          class="img-fluid"
+          alt="Responsive image"
+        />
+      </div>
+      <div class="card-body">
+        <h4 class="card-title">{{blog.category}}</h4>
+        <a style="font-size: 10px" class="card-link">{{blog.title}}</a>
+        <a style="font-size: 10px" class="card-link"
+          >By : {{blog.user.username}}</a
+        >
+        <a style="font-size: 10px" class="card-link">{{blog.created_date}}</a>
+        <a style="font-size: 10px" class="card-link"
+          >{{blog.blog_comments.all.count}} Comments</a
+        >
+
+        <p>{{blog.description|truncatewords:50}}</p>
+      </div>
+
+      <ul class="post-tags">
+        {% if blog.tags.all.count > 0 %} {% for tags in blog.tags.all %}
+        <li class="fa fa-tags">&nbsp; <a href="#">{{tags.title }}</a></li>
+        {% endfor %} {% else %} None {% endif %}
+      </ul>
+    </div>
+  </div>
+  {% endfor %}
+  <!-- {% include 'right_sidebar.html' %}-->
+</div>

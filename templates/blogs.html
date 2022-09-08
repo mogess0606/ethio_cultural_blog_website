@@ -1,0 +1,27 @@
+{% extends 'base.html'%}
+<!-- ============== -->
+{% load static %}
+<!-- ================== -->
+{% block title %} Blogs {% endblock title%}
+
+<!-- ================== -->
+{% block content %}
+
+<!-- ============================================================== -->
+<!-- Start right Content here -->
+<!-- ============================================================== -->
+<div class="main-content">
+  <div class="page-content">
+    <div class="container-fluid">
+      <!-- start page title -->
+      {% include 'blog_card.html' %}
+
+      <!-- end row -->
+      <div class="col-lg-12">{% include 'pagination.html' %}</div>
+    </div>
+  </div>
+  <!-- End Page-content -->
+</div>
+<!-- end main content-->
+
+{% endblock content %}

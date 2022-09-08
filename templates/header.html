@@ -1,0 +1,377 @@
+{% load static %}
+<header id="page-topbar" style="background-color: #fa03d3e">
+  <div class="navbar-header">
+    <div class="d-flex">
+      <!-- LOGO -->
+      <div class="navbar-brand-box">
+        <a href="{% url 'home' %}" class="logo logo-dark">
+          <span class="logo-sm">
+            <img
+              src="{% static '/images/logo-sm.png'%}"
+              alt="logo-sm-dark"
+              height="22"
+            />
+          </span>
+          <span class="logo-lg">
+            <img
+              src="{% static '/images/logo-dark2.png'%}"
+              alt="logo-dark"
+              height="22"
+            />
+          </span>
+        </a>
+
+        <a href="{% url 'home' %}" class="logo logo-light">
+          <span class="logo-sm">
+            <img
+              src="{% static '/images/logo-sm-light.png'%}"
+              alt="logo-sm-light"
+              height="22"
+            />
+          </span>
+          <span class="logo-lg">
+            <img
+              src="{% static '/images/logo-light.png'%}"
+              alt="logo-light"
+              height="22"
+            />
+          </span>
+        </a>
+      </div>
+
+      <button
+        type="button"
+        class="btn btn-sm px-3 font-size-18 d-lg-none header-item"
+        data-bs-toggle="collapse"
+        data-bs-target="#topnav-menu-content"
+      >
+        <i class="fa fa-fw fa-bars align-middle"></i>
+      </button>
+      <div class="topnav">
+        <div class="container-fluid">
+          <!-- App Search-->
+          <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
+            <div class="collapse navbar-collapse" id="topnav-menu-content">
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle arrow-none"
+                    href="{% url 'home' %}"
+                    id="topnav-uielement"
+                    role="button"
+                  >
+                    <i></i>Home
+                  </a>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle arrow-none"
+                    href="#"
+                    id="topnav-apps"
+                    role="button"
+                  >
+                    <i></i>Category
+                    <div class="arrow-down"></div>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="topnav-apps">
+                    <a href="{% url 'Mesikel' %}" class="dropdown-item"
+                      >Mesikel</a
+                    >
+                    <a href="{% url 'Mesikel' %}" class="dropdown-item"
+                      >Cris Mass</a
+                    >
+                    <a href="{% url 'Mesikel' %}" class="dropdown-item"
+                      >Ephyphany</a
+                    >
+                    <a href="{% url 'Mesikel' %}" class="dropdown-item"
+                      >Easter</a
+                    >
+                  </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle arrow-none"
+                    href="#"
+                    id="topnav-apps"
+                    role="button"
+                  >
+                    <i></i>Nature
+                    <div class="arrow-down"></div>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="topnav-apps">
+                    <a href="{% url 'Mesikel' %}" class="dropdown-item"
+                      >Mountain</a
+                    >
+                    <a href="{% url 'Mesikel' %}" class="dropdown-item">Lake</a>
+                    <a href="{% url 'Mesikel' %}" class="dropdown-item"
+                      >River</a
+                    >
+                    <a href="{% url 'Mesikel' %}" class="dropdown-item"
+                      >Living Things</a
+                    >
+                  </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle arrow-none"
+                    href="{% url 'add_blog' %}"
+                    id="topnav-apps"
+                    role="button"
+                  >
+                    <i></i> Add Blog
+                    <div class="arrow-down"></div>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="topnav-apps">
+                    <a href="{% url 'Mesikel' %}" class="dropdown-item"
+                      >Semien National Park</a
+                    >
+                    <a href="{% url 'Mesikel' %}" class="dropdown-item"
+                      >Sech Sar National Park</a
+                    >
+                  </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle arrow-none"
+                    href="#"
+                    id="topnav-components"
+                    role="button"
+                  >
+                    <i></i>Cultures
+                    <div class="arrow-down"></div>
+                  </a>
+                  <div
+                    class="dropdown-menu"
+                    aria-labelledby="topnav-components"
+                  >
+                    <a href="{% url 'Mesikel' %}" class="dropdown-item"
+                      >Problem Solving Skill</a
+                    >
+                    <a href="{% url 'Mesikel' %}" class="dropdown-item"
+                      >Mariages</a
+                    >
+                    <a href="{% url 'Mesikel' %}" class="dropdown-item"
+                      >Dancing</a
+                    >
+                  </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle arrow-none"
+                    href="#"
+                    id="topnav-components"
+                    role="button"
+                  >
+                    <i></i> Ethiopian History
+                    <div class="arrow-down"></div>
+                  </a>
+                  <div
+                    class="dropdown-menu"
+                    aria-labelledby="topnav-components"
+                  >
+                    <a href="{% url 'Mesikel' %}" class="dropdown-item"
+                      >Vectory</a
+                    >
+                    <a href="{% url 'Mesikel' %}" class="dropdown-item">Art</a>
+                    <a href="{% url 'Mesikel' %}" class="dropdown-item"
+                      >Sceince</a
+                    >
+
+                    <a href="{% url 'Mesikel' %}" class="dropdown-item"
+                      >Draout</a
+                    >
+                  </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle arrow-none"
+                    href="{% url 'Mesikel' %}"
+                    id="topnav-uielement"
+                    role="button"
+                  >
+                    <i></i>Login
+                  </a>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle arrow-none"
+                    href="{% url 'Mesikel' %}"
+                    id="topnav-uielement"
+                    role="button"
+                  >
+                    <i></i>Register
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex">
+      <div class="dropdown d-inline-block d-lg-none ms-2">
+        <button
+          type="button"
+          class="btn header-item noti-icon waves-effect"
+          id="page-header-search-dropdown"
+          data-bs-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <i class="ri-search-line"></i>
+        </button>
+        <div
+          class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+          aria-labelledby="page-header-search-dropdown"
+        >
+          <form class="p-3">
+            <div class="mb-3 m-0">
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Search ..."
+                />
+                <div class="input-group-append">
+                  <button class="btn btn-primary" type="submit">
+                    <i class="ri-search-line"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <form class="app-search d-none d-lg-block">
+        <div class="position-relative">
+          <input type="text" class="form-control" placeholder="Search..." />
+          <span class="ri-search-line"></span>
+        </div>
+      </form>
+
+      <div class="dropdown d-inline-block user-dropdown">
+        <button
+          type="button"
+          class="btn header-item waves-effect"
+          id="page-header-user-dropdown"
+          data-bs-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <img
+            class="rounded-circle header-profile-user"
+            src="{% static '/images/users/avatar.jpg' %}"
+            alt="Header Avatar"
+          />
+        </button>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
+          <div class="p-3">
+            <div class="row align-items-center">
+              <div class="col">
+                <h6 class="m-0">Mogess Mekonnen</h6>
+              </div>
+              <div class="col-auto">
+                <a href="#!" class="small"> Available</a>
+              </div>
+            </div>
+          </div>
+          <div data-simplebar style="max-height: 230px">
+            <!-- item-->
+            <a href="#" class="text-reset notification-item">
+              <div class="d-flex align-items-center">
+                <div class="avatar-xs me-3 mt-1">
+                  <span
+                    class="avatar-title bg-soft-primary rounded-circle font-size-16"
+                  >
+                    <i class="ri-user-line text-primary font-size-16"></i>
+                  </span>
+                </div>
+                <div class="flex-grow-1 text-truncate">
+                  <h6 class="mb-1">Profile</h6>
+                  <p class="mb-0 font-size-12">
+                    View personal profile details.
+                  </p>
+                </div>
+              </div>
+            </a>
+            <!-- item-->
+            <a href="#" class="text-reset notification-item">
+              <div class="d-flex align-items-center">
+                <div class="avatar-xs me-3 mt-1">
+                  <span
+                    class="avatar-title bg-soft-warning rounded-circle font-size-16"
+                  >
+                    <i class="ri-wallet-2-line text-warning font-size-16"></i>
+                  </span>
+                </div>
+                <div class="flex-grow-1 text-truncate">
+                  <h6 class="mb-1">My Wallet</h6>
+                  <p class="mb-0 font-size-12">Modify your personal details.</p>
+                </div>
+              </div>
+            </a>
+            <!-- item-->
+            <a href="#" class="text-reset notification-item">
+              <div class="d-flex align-items-center">
+                <div class="avatar-xs me-3 mt-1">
+                  <span
+                    class="avatar-title bg-soft-secondary rounded-circle font-size-16"
+                  >
+                    <i class="ri-settings-2-line text-secondary"></i>
+                  </span>
+                </div>
+                <div class="flex-grow-1 text-truncate">
+                  <h6 class="mb-1">
+                    Settings
+                    <span class="badge bg-success float-end mt-1">11</span>
+                  </h6>
+                  <p class="mb-0 font-size-12">
+                    Manage your account parameters.
+                  </p>
+                </div>
+              </div>
+            </a>
+            <!-- item-->
+            <a href="#" class="text-reset notification-item">
+              <div class="d-flex align-items-center">
+                <div class="avatar-xs me-3 mt-1">
+                  <span
+                    class="avatar-title bg-soft-primary rounded-circle font-size-16"
+                  >
+                    <i class="ri-lock-unlock-line text-primary"></i>
+                  </span>
+                </div>
+                <div class="flex-grow-1 text-truncate">
+                  <h6 class="mb-1">Lock screen</h6>
+                  <p class="mb-0 font-size-12">
+                    Control your privacy parameters..
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <!-- item-->
+          <div class="pt-2 border-top">
+            <div class="d-grid">
+              <a
+                class="btn btn-sm btn-link font-size-14 text-center"
+                href="javascript:void(0)"
+              >
+                <i class="ri-shut-down-line align-middle me-1"></i> Logout
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
