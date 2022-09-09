@@ -1,17 +1,57 @@
 <div class="col-xl-3 col-sm-6" style="width: 250px">
   <div class="card">
     <div class="card-body">
-      <div class="row text-center">
-        {% for Category in categories %}
+      <div class="row">
+        <h4>Category</h4>
         <div class="col-12">
-          <h4 class="text-muted mb-2">{{Category.title}}</h4>
-          <h5>72</h5>
+          {% for Category in Categories %}
+          <ul>
+            <li>
+              <a href="#">{{Category.title}}</a>
+            </li>
+            <!---->
+          </ul>
+          {% endfor %}
         </div>
-        <div class="col-12">
-          <h4 class="text-muted mb-2">Wallet Balance</h4>
-          <h5>$10,352</h5>
+      </div>
+
+      <div class="row">
+        <h4 class="card-title">Tags</h4>
+
+        <div class="d-flex flex-wrap gap-3">
+          <button
+            style="font-size: 12px"
+            type="button"
+            class="btn btn-light waves-effect"
+            data-bs-toggle="popover"
+            data-bs-placement="top"
+            data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+          >
+            Popover
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-light waves-effect"
+            data-bs-toggle="popover"
+            data-bs-placement="right"
+            style="font-size: 12px"
+            data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+          >
+            Popover
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-light waves-effect"
+            data-bs-toggle="popover"
+            data-bs-placement="bottom"
+            style="font-size: 12px"
+            data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+          >
+            Popoverom
+          </button>
         </div>
-        {% endfor %}
       </div>
     </div>
   </div>
