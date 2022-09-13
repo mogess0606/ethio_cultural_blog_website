@@ -9,17 +9,17 @@
         data-bs-ride="carousel"
       >
         <div class="carousel-inner" role="listbox">
-          {% for blog in blogs %}
-          <h4 class="card-title">{{ blog.category }}</h4>
           <div class="carousel-item">
+            {% for blog in blogs %}
+
             <img
               src="{{blog.banner.url}}"
               alt="..."
+              style="width: 1300px"
               class="d-block img-fluid"
             />
-            <div class="carousel-caption d-none d-md-block text-white-50">
-              <h5 class="text-white">{{ blog.title }}</h5>
-            </div>
+            <h5 class="text-white">{{ blog.title }}</h5>
+            <h4 class="card-title">{{ blog.category }}</h4>
           </div>
           {% endfor %}
         </div>

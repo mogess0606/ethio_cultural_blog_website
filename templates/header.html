@@ -7,7 +7,7 @@
         <a href="{% url 'home' %}" class="logo logo-dark">
           <span class="logo-sm">
             <img
-              src="{% static '/images/logo-sm.png'%}"
+              src="{% static '/images/logo-dark2.png'%}"
               alt="logo-sm-dark"
               height="22"
             />
@@ -63,55 +63,15 @@
                     <i></i>Home
                   </a>
                 </li>
-
                 <li class="nav-item dropdown">
                   <a
                     class="nav-link dropdown-toggle arrow-none"
-                    href="#"
+                    href="{% url 'blogs' %}"
                     id="topnav-apps"
                     role="button"
                   >
-                    <i></i>Category
-                    <div class="arrow-down"></div>
+                    <i></i> Blogs
                   </a>
-                  <div class="dropdown-menu" aria-labelledby="topnav-apps">
-                    <a href="{% url 'Mesikel' %}" class="dropdown-item"
-                      >Mesikel</a
-                    >
-                    <a href="{% url 'Mesikel' %}" class="dropdown-item"
-                      >Cris Mass</a
-                    >
-                    <a href="{% url 'Mesikel' %}" class="dropdown-item"
-                      >Ephyphany</a
-                    >
-                    <a href="{% url 'Mesikel' %}" class="dropdown-item"
-                      >Easter</a
-                    >
-                  </div>
-                </li>
-
-                <li class="nav-item dropdown">
-                  <a
-                    class="nav-link dropdown-toggle arrow-none"
-                    href="#"
-                    id="topnav-apps"
-                    role="button"
-                  >
-                    <i></i>Nature
-                    <div class="arrow-down"></div>
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="topnav-apps">
-                    <a href="{% url 'Mesikel' %}" class="dropdown-item"
-                      >Mountain</a
-                    >
-                    <a href="{% url 'Mesikel' %}" class="dropdown-item">Lake</a>
-                    <a href="{% url 'Mesikel' %}" class="dropdown-item"
-                      >River</a
-                    >
-                    <a href="{% url 'Mesikel' %}" class="dropdown-item"
-                      >Living Things</a
-                    >
-                  </div>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -128,79 +88,68 @@
                 <li class="nav-item dropdown">
                   <a
                     class="nav-link dropdown-toggle arrow-none"
-                    href="#"
-                    id="topnav-components"
+                    href="{% url 'add_blog' %}"
+                    id="topnav-apps"
                     role="button"
                   >
-                    <i></i>Cultures
-                    <div class="arrow-down"></div>
+                    <i></i> Post Detail
                   </a>
-                  <div
-                    class="dropdown-menu"
-                    aria-labelledby="topnav-components"
-                  >
-                    <a href="{% url 'Mesikel' %}" class="dropdown-item"
-                      >Problem Solving Skill</a
-                    >
-                    <a href="{% url 'Mesikel' %}" class="dropdown-item"
-                      >Mariages</a
-                    >
-                    <a href="{% url 'Mesikel' %}" class="dropdown-item"
-                      >Dancing</a
-                    >
-                  </div>
                 </li>
 
                 <li class="nav-item dropdown">
                   <a
                     class="nav-link dropdown-toggle arrow-none"
                     href="#"
-                    id="topnav-components"
+                    id="topnav-apps"
                     role="button"
                   >
-                    <i></i> Ethiopian History
+                    <i></i>Category
                     <div class="arrow-down"></div>
                   </a>
-                  <div
-                    class="dropdown-menu"
-                    aria-labelledby="topnav-components"
-                  >
-                    <a href="{% url 'Mesikel' %}" class="dropdown-item"
-                      >Vectory</a
-                    >
-                    <a href="{% url 'Mesikel' %}" class="dropdown-item">Art</a>
-                    <a href="{% url 'Mesikel' %}" class="dropdown-item"
-                      >Sceince</a
-                    >
 
-                    <a href="{% url 'Mesikel' %}" class="dropdown-item"
-                      >Draout</a
-                    >
+                  <div class="dropdown-menu" aria-labelledby="topnav-apps">
+                    {% for category in Categories %}
+                    <a
+                      href="{% url 'category_blogs' category.slug %}"
+                      class="dropdown-item"
+                      >{{category.title}}</a
+                    >{% endfor %}
                   </div>
                 </li>
-
+                {% if request.user.is_authenticated %} {% else %}
                 <li class="nav-item dropdown">
                   <a
                     class="nav-link dropdown-toggle arrow-none"
-                    href="{% url 'Mesikel' %}"
-                    id="topnav-uielement"
-                    role="button"
-                  >
-                    <i></i>Login
-                  </a>
-                </li>
-
-                <li class="nav-item dropdown">
-                  <a
-                    class="nav-link dropdown-toggle arrow-none"
-                    href="{% url 'Mesikel' %}"
+                    href="{% url 'register' %}"
                     id="topnav-uielement"
                     role="button"
                   >
                     <i></i>Register
                   </a>
                 </li>
+                {% endif %}
               </ul>
+              <form
+                action="{% url 'search_blogs' %}"
+                method="GET"
+                class="form-inline d-flex-nowrap m-auto my-2 search-form"
+              >
+                <div class="row">
+                  <div class="col-sm-10">
+                    <input
+                      type="text"
+                      class="form-control px-5"
+                      name="search"
+                      placeholder=" Search ... "
+                    />
+                  </div>
+                  <div class="col-sm-2">
+                    <button type="submit" class="btn btn-info px-5">
+                      Search
+                    </button>
+                  </div>
+                </div>
+              </form>
             </div>
           </nav>
         </div>
@@ -208,47 +157,7 @@
     </div>
 
     <div class="d-flex">
-      <div class="dropdown d-inline-block d-lg-none ms-2">
-        <button
-          type="button"
-          class="btn header-item noti-icon waves-effect"
-          id="page-header-search-dropdown"
-          data-bs-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          <i class="ri-search-line"></i>
-        </button>
-        <div
-          class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
-          aria-labelledby="page-header-search-dropdown"
-        >
-          <form class="p-3">
-            <div class="mb-3 m-0">
-              <div class="input-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Search ..."
-                />
-                <div class="input-group-append">
-                  <button class="btn btn-primary" type="submit">
-                    <i class="ri-search-line"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-
-      <form class="app-search d-none d-lg-block">
-        <div class="position-relative">
-          <input type="text" class="form-control" placeholder="Search..." />
-          <span class="ri-search-line"></span>
-        </div>
-      </form>
-
+      {% if request.user.is_authenticated %}
       <div class="dropdown d-inline-block user-dropdown">
         <button
           type="button"
@@ -264,20 +173,18 @@
             alt="Header Avatar"
           />
         </button>
+
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
           <div class="p-3">
             <div class="row align-items-center">
-              <div class="col">
+              <div class="col text-center">
                 <h6 class="m-0">Mogess Mekonnen</h6>
-              </div>
-              <div class="col-auto">
-                <a href="#!" class="small"> Available</a>
               </div>
             </div>
           </div>
           <div data-simplebar style="max-height: 230px">
             <!-- item-->
-            <a href="#" class="text-reset notification-item">
+            <a href="{% url 'profile' %}" class="text-reset notification-item">
               <div class="d-flex align-items-center">
                 <div class="avatar-xs me-3 mt-1">
                   <span
@@ -288,9 +195,6 @@
                 </div>
                 <div class="flex-grow-1 text-truncate">
                   <h6 class="mb-1">Profile</h6>
-                  <p class="mb-0 font-size-12">
-                    View personal profile details.
-                  </p>
                 </div>
               </div>
             </a>
@@ -305,62 +209,36 @@
                   </span>
                 </div>
                 <div class="flex-grow-1 text-truncate">
-                  <h6 class="mb-1">My Wallet</h6>
-                  <p class="mb-0 font-size-12">Modify your personal details.</p>
+                  <h6 class="mb-1">Notification</h6>
                 </div>
               </div>
             </a>
             <!-- item-->
-            <a href="#" class="text-reset notification-item">
-              <div class="d-flex align-items-center">
-                <div class="avatar-xs me-3 mt-1">
-                  <span
-                    class="avatar-title bg-soft-secondary rounded-circle font-size-16"
-                  >
-                    <i class="ri-settings-2-line text-secondary"></i>
-                  </span>
-                </div>
-                <div class="flex-grow-1 text-truncate">
-                  <h6 class="mb-1">
-                    Settings
-                    <span class="badge bg-success float-end mt-1">11</span>
-                  </h6>
-                  <p class="mb-0 font-size-12">
-                    Manage your account parameters.
-                  </p>
-                </div>
-              </div>
-            </a>
-            <!-- item-->
-            <a href="#" class="text-reset notification-item">
-              <div class="d-flex align-items-center">
-                <div class="avatar-xs me-3 mt-1">
-                  <span
-                    class="avatar-title bg-soft-primary rounded-circle font-size-16"
-                  >
-                    <i class="ri-lock-unlock-line text-primary"></i>
-                  </span>
-                </div>
-                <div class="flex-grow-1 text-truncate">
-                  <h6 class="mb-1">Lock screen</h6>
-                  <p class="mb-0 font-size-12">
-                    Control your privacy parameters..
-                  </p>
-                </div>
-              </div>
-            </a>
           </div>
           <!-- item-->
           <div class="pt-2 border-top">
             <div class="d-grid">
               <a
                 class="btn btn-sm btn-link font-size-14 text-center"
-                href="javascript:void(0)"
+                href="{% url 'logout' %}"
               >
-                <i class="ri-shut-down-line align-middle me-1"></i> Logout
+                <i class="ri-shut-down-line align-middle me-1"> </i> Logout
               </a>
             </div>
           </div>
+
+          {% else %}
+          <div class="pt-2">
+            <div class="d-grid">
+              <a
+                class="btn btn-sm btn-link font-size-14 text-center"
+                href="{% url 'login' %}"
+              >
+                <i> </i> Login
+              </a>
+            </div>
+          </div>
+          {% endif %}
         </div>
       </div>
     </div>
