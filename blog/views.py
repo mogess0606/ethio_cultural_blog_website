@@ -6,7 +6,7 @@ from django.contrib import messages
 from multiprocessing import context
 from django.shortcuts import get_object_or_404,render, redirect
 from  django.core.paginator import  PageNotAnInteger, EmptyPage, Paginator
-
+from user_profile.models import User
 
 from  .models import  (
     Blog,
@@ -194,13 +194,14 @@ def Mesikel(request):
     return render(request, 'Mesikel.html')
 
 
+@login_required(login_url='login')
 def add_blog(request):
     form = AddBlogForm(request.POST, request.FILES)
     if form.is_valid():
-       # user = get_object_or_404(user, pk=request.pk)
+        user = get_object_or_404(User, pk=request.user.pk)
         category = get_object_or_404(Category, pk=request.POST["category"])
         blog = form.save(commit=False)
-        #blog.user = user
+        blog.user = user
         blog.category = category
         blog.save()
         messages.success(request, "Blog successfully added !")

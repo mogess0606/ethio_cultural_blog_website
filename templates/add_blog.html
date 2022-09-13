@@ -1,83 +1,104 @@
 {% extends 'base.html'%}
-<!-- ============== -->
+<!-- COMMENTS TO LOAD STATIC FILES -->
 {% load static %}
-<!-- ================== -->
-{% block title %} Add Blogs {% endblock title%}
-
-<!-- ================== -->
+<!-- COMMENTS FOR TIRLES -->
+{% block title %} Profile {% endblock title %}
+<!-- COMMENTS TO LOAD CONTENTS -->
 {% block content %}
-<!-- ============================================================== -->
-<!-- Start right Content here -->
-<!-- ============================================================== -->
+<!-- COMMENTS CONTENTS DETAILS -->
+
 <div class="main-content">
   <div class="page-content">
     <div class="container-fluid">
-      <!-- start page title -->
+      <!-- {% include 'banner.html' %}
+       start page title -->
+
       <div class="row">
         <div class="col-lg-12">
           <div class="card">
             <div class="card-body">
-              <h4 class="card-title mb-4">Add Blog</h4>
-              <form action="" method="POST">
-                {% csrf_token %}
-                <div class="form-group">
-                  <label for="title"> Blog title </label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    name="title"
-                    placeholder="Enter title"
-                  />
-                  <p class="text-danger py-1">{{form.title.errors}}</p>
+              <div class="row">
+                <div class="col-xl-12">
+                  <form
+                    action="#"
+                    class="px-4"
+                    method="POST"
+                    enctype="multipart/form-data"
+                  >
+                    {{form.media}}
+                    <!--  -->
+                    {% csrf_token %}
+                    <div class="form-group">
+                      <label for="title"> Blog title </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="title"
+                        placeholder="Enter title"
+                      />
+                      <span class="text text-danger"
+                        >{{form.title.errors}}</span
+                      >
+                    </div>
+                    <div class="form-group">
+                      <label for="category"> Blog title </label>
+                      <select
+                        name="category"
+                        id="category_id"
+                        class="form-control"
+                      >
+                        {% for Category in Categories %}
+                        <option value="{{Category.id}}">
+                          {{Category.title}}
+                        </option>
+                        {% endfor %}
+                      </select>
+                      <span class="text text-danger"
+                        >{{form.category.errors}}</span
+                      >
+                    </div>
+                    <div class="form-group">
+                      <label for="title"> Description </label>
+                      <textarea name="description" id="" class="form-control">
+                      </textarea>
+                      <span class="text text-danger"
+                        >{{form.description.errors}}</span
+                      >
+                    </div>
+                    <div class="form-group">
+                      <label for="title"> Blog banner </label>
+                      <input
+                        type="file"
+                        class="form-control"
+                        name="banner"
+                        placeholder="Enter title"
+                      />
+                      <span class="text text-danger"
+                        >{{form.banner.errors}}</span
+                      >
+                    </div>
+                    <div class="form-group">
+                      <label for="title"> Tags </label>
+                      <textarea name="tags" id="" class="form-control">
+                      </textarea>
+                      <span class="text text-danger">{{form.tags.errors}}</span>
+                    </div>
+                    <div class="form-group py-3">
+                      <button type="submit" class="btn btn-info float-end">
+                        Add
+                      </button>
+                    </div>
+                  </form>
                 </div>
-                <div class="form-group">
-                  <label for="category"> Blog title </label>
+              </div>
+              <!-- end row -->
 
-                  <select name="category" id="category_id" class="form-control">
-                    {% for Category in Categories %}
-                    <option value="{{category.id}}">{{Category.title}}</option>
-                    {% endfor %}
-                    <p class="text-danger py-1">{{form.category.errors}}</p>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="title"> Description </label>
-                  <textarea name="description" id="" class="form-control">
-                  </textarea>
-                  <p class="text-danger py-1">{{form.description.errors}}</p>
-                </div>
-                <div class="form-group">
-                  <label for="title"> Blog banner </label>
-                  <input
-                    type="file"
-                    class="form-control"
-                    name="banner"
-                    placeholder="Enter title"
-                  />
-                  <p class="text-danger py-1">{{form.banner.errors}}</p>
-                </div>
-                <div class="form-group">
-                  <label for="title"> Description </label>
-                  <textarea name="tags" id="" class="form-control"> </textarea>
-                  <p class="text-danger py-1">{{form.tags.errors}}</p>
-                </div>
-                <br />
-                <div class="form-group my-2">
-                  <button class="btn btn-success btn-block" type="submit">
-                    <li class="fa fa-check"></li>
-                    Add
-                  </button>
-                </div>
-              </form>
+              <!-- End Page-content -->
             </div>
           </div>
         </div>
       </div>
-      <!-- end row -->
+      {% endblock content %}
     </div>
   </div>
-
-  <!-- end main content-->
-
-  {% endblock content %}
 </div>

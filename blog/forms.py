@@ -9,6 +9,8 @@ class  TextForm(forms.Form):
 
 
 class  AddBlogForm(forms.ModelForm):
+    
+    
     class Meta:
         model = Blog
         fields = (
