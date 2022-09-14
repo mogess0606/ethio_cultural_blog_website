@@ -89,11 +89,10 @@
                   </div>
                     <ul>
                       {% for comment in blog.blog_comments.all %}
-                          <div class="auth-thumb">
-                            <img src="{{comment.user.get_profile_picture}}" alt="">
-                          </div>
-                          <div class="right-content">
-                            <h6>{{ comment.user.username }} <span> {{comment.created_date}}</span> </h6>
+                         <div class="right-content">
+                            <h6   style="font-size:10px;">
+                              <img class="rounded-circle header-profile-user" src="{{comment.user.get_profile_picture}}" alt="">
+                            {{ comment.user.username }} <span> {{comment.created_date}}</span> </h6>
                             <p>{{comment.text}}</p>
                           <form class="submit-reply"  id="comment" action="{% url 'add_reply' blog.id comment.id %}" method="POST">
                               {% csrf_token %}
@@ -130,11 +129,10 @@
                               </div>
                           </form>  
                              {% for reply in comment.comment_replies.all %}
-                          <div class="auth-thumb">
-                            <img src="{{reply.user.get_profile_picture}}" alt="">
-                          </div>
-                          <div class="right-content">
-                            <h6>{{ reply.user.username }} <span> {{reply.created_date}}</span> </h6>
+                          <div class="right-content" >
+                            <h6 style="font-size:10px;" >
+                              <img class="rounded-circle header-profile-user" src="{{reply.user.get_profile_picture}}" alt="">
+                            {{ reply.user.username }} <span> {{reply.created_date}}</span> </h6>
                             <p>{{reply.text}}</p>                         
                           </div>
                         {% endfor %}
