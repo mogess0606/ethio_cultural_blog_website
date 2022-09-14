@@ -1,20 +1,19 @@
-from multiprocessing import context
-from user_profile.models import User
-from django.shortcuts import render, redirect,get_object_or_404
-from  django.contrib import messages
-from django.contrib.auth import  login, logout, authenticate
+from django.shortcuts import get_object_or_404, redirect, render
+from django.contrib import messages
+from django.contrib.auth import login, logout, authenticate
 from django.views.decorators.cache import never_cache
-from django.contrib.auth.decorators import  login_required
+from django.contrib.auth.decorators import login_required
 
 from .forms import (
     UserRegistrationForm,
     LoginForm,
-    UserUpdateProfileForm
-    )
-
-from  .decorators import (
+    UserProfileUpdateForm,
+    ProfilePictureUpdateForm
+)
+from .decorators import  (
     not_logged_in_required
 )
+
 
 from .models import User
 
@@ -72,14 +71,14 @@ def register_user(request):
 @login_required(login_url='login')
 def profile(request):
     account  = get_object_or_404(User,pk=request.user.pk)
-    form = UserUpdateProfileForm(instance=account)
+    form = UserProfileUpdateForm(instance=account)
     
     if request.method == "POST":
         if request.user.pk != account.pk:
             return redirect('home')
         
         
-        form =  UserUpdateProfileForm(request.POST, instance=account)
+        form =  UserProfileUpdateForm(request.POST, instance=account)
         if form.is_valid():
             form.save()
             messages.success(request, "Profile Updated Successfully")
@@ -91,4 +90,26 @@ def profile(request):
         "account": account,
         "form":form
     }
-    return render(request, 'profile.html')
+    return render(request, 'profile.html',context)
+
+@login_required
+def change_profile_picture(request):
+    if request.method == "POST":
+        
+        form = ProfilePictureUpdateForm(request.POST, request.FILES)
+        
+        if form.is_valid():
+            image = request.FILES['profile_image']
+            user = get_object_or_404(User, pk=request.user.pk)
+            
+            if request.user.pk != user.pk:
+                return redirect('home')
+
+            user.profile_image = image
+            user.save()
+            messages.success(request, "Profile image updated successfully")
+
+        else:
+            print(form.errors)
+
+    return redirect('profile')

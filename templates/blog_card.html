@@ -20,7 +20,7 @@
         >
         <hr />
 
-        <p>{{blog.description|truncatewords:50}}</p>
+        <p style="text-align: justify">{{blog.description|truncatewords:50}}</p>
       </div>
 
       <div class="row"  style="font-size:11px">
@@ -36,11 +36,18 @@
           </ul>
         </div>
         <div class="col-6">
-          <ul class="post-share">            
-            <li class="fa fa-share-alt"></li>
-            <a href="">&nbsp;&nbsp;Facebook</a>
-            <a href="">&nbsp;&nbsp;Twitter</a>
-          </ul>
+           <ul class="post-share">
+              <span id="like_count">{{blog.likes.count}}</span>
+              {% if liked_by %}
+              <a class="fa fa-heart" id="like-icon" data-blog="{{blog.id}}" href="javascript:void(0);" ></a>
+                {% else %}
+                  <a class="fa fa-heart empty-heart" href="javascript:void(0);" id="like-icon" data-blog="{{blog.id}}" ></a
+              >
+              {% endif %}
+              <li class="fa fa-share-alt"></li>
+              <a href="">&nbsp;&nbsp;Facebook</a>
+              <a href="">&nbsp;&nbsp;Twitter</a>
+            </ul>
         </div>
       </div>
     </div>

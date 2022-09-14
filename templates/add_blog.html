@@ -2,7 +2,7 @@
 <!-- COMMENTS TO LOAD STATIC FILES -->
 {% load static %}
 <!-- COMMENTS FOR TIRLES -->
-{% block title %} Profile {% endblock title %}
+{% block title %} Add Blog {% endblock title %}
 <!-- COMMENTS TO LOAD CONTENTS -->
 {% block content %}
 <!-- COMMENTS CONTENTS DETAILS -->
@@ -59,7 +59,12 @@
                     </div>
                     <div class="form-group">
                       <label for="title"> Description </label>
-                      <textarea name="description" id="" class="form-control">
+                      <textarea
+                        name="description"
+                        id=""
+                        class="form-control"
+                        placeholder="Enter Description"
+                      >
                       </textarea>
                       <span class="text text-danger"
                         >{{form.description.errors}}</span
@@ -79,7 +84,12 @@
                     </div>
                     <div class="form-group">
                       <label for="title"> Tags </label>
-                      <textarea name="tags" id="" class="form-control">
+                      <textarea
+                        name="tags"
+                        id=""
+                        class="form-control"
+                        placeholder="Enter with Comma Separator"
+                      >
                       </textarea>
                       <span class="text text-danger">{{form.tags.errors}}</span>
                     </div>

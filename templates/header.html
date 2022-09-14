@@ -88,7 +88,7 @@
                 <li class="nav-item dropdown">
                   <a
                     class="nav-link dropdown-toggle arrow-none"
-                    href="{% url 'add_blog' %}"
+                    href="{% url 'post_detail' %}"
                     id="topnav-apps"
                     role="button"
                   >
@@ -169,7 +169,7 @@
         >
           <img
             class="rounded-circle header-profile-user"
-            src="{% static '/images/users/avatar.jpg' %}"
+            src="{{request.user.get_profile_picture}}"
             alt="Header Avatar"
           />
         </button>
@@ -178,7 +178,10 @@
           <div class="p-3">
             <div class="row align-items-center">
               <div class="col text-center">
-                <h6 class="m-0">Mogess Mekonnen</h6>
+                <h6 class="m-0">
+                  {{request.user.first_name}} {{request.user.last_name}}
+                </h6>
+                <span style="font-size: 9px">{{request.user.email}}</span>
               </div>
             </div>
           </div>
@@ -198,22 +201,6 @@
                 </div>
               </div>
             </a>
-            <!-- item-->
-            <a href="#" class="text-reset notification-item">
-              <div class="d-flex align-items-center">
-                <div class="avatar-xs me-3 mt-1">
-                  <span
-                    class="avatar-title bg-soft-warning rounded-circle font-size-16"
-                  >
-                    <i class="ri-wallet-2-line text-warning font-size-16"></i>
-                  </span>
-                </div>
-                <div class="flex-grow-1 text-truncate">
-                  <h6 class="mb-1">Notification</h6>
-                </div>
-              </div>
-            </a>
-            <!-- item-->
           </div>
           <!-- item-->
           <div class="pt-2 border-top">

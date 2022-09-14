@@ -18,11 +18,30 @@ from  .models import  (
 
 from .forms import TextForm,  AddBlogForm
 
+def post_detail(request):
+    blogs = Blog.objects.order_by('-created_date')
+    tags = Tag.objects.order_by('-create_date')
+    context = {
+        "blogs": blogs,
+        "tags": tags
+        
+    }
+    return render(request, 'post_detail.html', context)
 # Create your views here.
 
 def home(request):
-    blogs = Blog.objects.order_by('-created_date')
+    queryset = Blog.objects.order_by('-created_date')
     tags = Tag.objects.order_by('-create_date')
+    page = request.GET.get('page', 1)
+    paginator = Paginator(queryset, 4)
+    
+    try:
+        blogs = paginator.page(page)
+    except EmptyPage:
+        blogs = paginator.page(1)
+    except PageNotAnInteger:
+         blogs = paginator.page(1)
+       
     context = {
         "blogs": blogs,
         "tags": tags
@@ -190,25 +209,27 @@ def search_blogs(request):
 
     
 
-def Mesikel(request):
-    return render(request, 'Mesikel.html')
+
 
 
 @login_required(login_url='login')
 def add_blog(request):
-    form = AddBlogForm(request.POST, request.FILES)
-    if form.is_valid():
-        user = get_object_or_404(User, pk=request.user.pk)
-        category = get_object_or_404(Category, pk=request.POST["category"])
-        blog = form.save(commit=False)
-        blog.user = user
-        blog.category = category
-        blog.save()
-        messages.success(request, "Blog successfully added !")
-        return redirect("blog_details", slug=blog.slug)
-    else:
-        print(form.errors)
+    form = AddBlogForm()
+    if request.method == "POST":
+        form = AddBlogForm(request.POST, request.FILES)
+        if form.is_valid():
+            user = get_object_or_404(User, pk=request.user.pk)
+            category = get_object_or_404(Category, pk=request.POST["category"])
+            blog = form.save(commit=False)
+            blog.user = user
+            blog.category = category
+            blog.save()
+            
+            messages.success(request, "Blog successfully added !")
+            return redirect("blog_details", slug=blog.slug)
+        else:
+            print(form.errors)
     context = {
         "form":form
-    }
+        }
     return render(request, 'add_blog.html', context)
